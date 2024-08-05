@@ -5,30 +5,68 @@
 	font-family: arial;
 }
 
+/*  */
+/*  */ /*  */
 /* MOBILE STYLES */
+/*  */ /*  */ /*  */
 
 header {
 	display: flex;
 	justify-content: space-between;
+	align-items: flex-start;
+	background-color: transparent;
+	padding: 0 1rem 0 1rem;
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100%;
+	justify-content: center;
 	align-items: center;
-	margin: 0 1rem 0 1rem;
+	z-index: 2;
 }
 
 .nav-items {
 	list-style: none;
 }
 
+.nav-items > li {
+	padding: 1rem;
+	font-weight: 600;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+.burger {
+	border: none;
+	background-color: transparent;
+	font-size: 1.5rem;
+}
+
+.cross {
+	border: none;
+	background-color: transparent;
+	font-size: 1.5rem;
+}
+
+/*  */
+/*  */ /*  */
+/* IMAGE GALLERY */
+/*  */ /*  */ /*  */
+
 .grid-wrapper {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-template-rows: auto;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
 	margin: 2rem 1rem 2rem 1rem;
 	min-height: 100vh;
 	justify-content: center;
-	grid-template-areas:
-		"hero hero hero hero"
-		"img1 img1 img2 img2";
-	gap: 10px;
+	gap: 8px;
 }
 .grid-wrapper > div {
 	border: 1px solid rgb(0, 0, 0);
@@ -36,18 +74,74 @@ header {
 }
 
 .hero {
-	grid-area: hero;
+	grid-column: span 4 / span 4;
+	grid-row: span 2 / span 2;
 }
 
 .img1 {
-	grid-area: img1;
+	grid-column: span 2 / span 2;
+	grid-row-start: 3;
 }
 .img2 {
-	grid-area: img2;
+	grid-column: span 2 / span 2;
+	grid-column-start: 3;
+	grid-row-start: 3;
 }
+.img3 {
+	grid-column: span 2 / span 2;
+	grid-row-start: 4;
+}
+.img4 {
+	grid-column: span 2 / span 2;
+	grid-column-start: 3;
+	grid-row-start: 4;
+}
+.img5 {
+	grid-column: span 4 / span 4;
+	grid-row: span 2 / span 2;
+	grid-row-start: 5;
+}
+
+/*  */
+/*  */ /*  */
+/* FOOTER */
+/*  */ /*  */ /*  */
 
 footer {
 	display: flex;
 	flex-direction: column;
 	margin: 0 1rem 0 1rem;
+	justify-items: center;
+	justify-content: flex-start;
+	align-items: center;
 }
+
+.socials {
+	font-size: 1.6rem;
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	width: 100%;
+	padding: 10px;
+}
+
+.attributions {
+	font-size: 12px;
+}
+.attributions > p {
+	padding: 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+/*  */ /*  */ /*  */ /*  */
+/*  */ /*  */ /*  */ /*  */
+/*  */ /*  */ /*  */ /*  */
+/*  */ /*  */ /*  */ /*  */
+/* MEDIA QUERIES */
+
+/*  */ /*  */ /*  */
+/* TABLETS */
+/*  */ /*  */ /*  */

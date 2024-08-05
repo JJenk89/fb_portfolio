@@ -5,33 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/css/index.css">
     <script src="/assets/js/main.js" defer></script>
-    <title>Francesca Photography</title>
+    <script src="https://kit.fontawesome.com/b05d5458c5.js" crossorigin="anonymous"></script>
+    <title>Visuals by Francesca Buccione</title>
 </head>
 <body>
     <header>
         <div class="logo"><h1>FB</h1></div>
-        <nav>
-            <ul class="nav-items">
-                <li><a href="/">PORTFOLIO</a></li>
-                <li><a href="/html/gallery/gallery.html">GALLERY</a></li>
-                <li><a href="/html/about.html">ABOUT ME & Contact</a></li>
+        
+        <nav class="hidden" id="menu">
+            <ul class="nav-items " >
+                <li><a href="/">Portfolio</a></li>
+                <li><a href="/html/gallery/gallery.html">Gallery</a></li>
+                <li><a href="/html/about.html">About Me</a></li>
             </ul>
         </nav>
+        <button class="burger" id="burger"><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></button>
+        <button class="cross hidden" id="cross"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
     </header>
     <section class="gallery">
         <div class="grid-wrapper">
         <div class="hero">hero</div>
         <div class="img1">img 1</div>
-        <div class="img2">img 2</div></div>
+        <div class="img2">img 2</div>
+        <div class="img3">img 3</div>
+        <div class="img4">img 4</div>
+        <div class="img5">img 5</div>
+    </div>
         
     </section>
     <footer>
+        <h6>Contact</h6>
         <section class="socials">
-            <!-- ADD SOCIAL LINKS -->
+            <a href="https://www.instagram.com/francesca.buccione" target="_blank"><i class="fa-brands fa-instagram" style="color: #000000;"></i></a>
+            <a href="mailto:"><i class="fa-regular fa-envelope" style="color: #000000;"></i></a>
         </section>
         <div class="attributions">
-            <p>&#169; <a href="https://github.com/JJenk89" target="_blank">JJenk89</a> Web Design 2024</p>
-            <p>All photos, images and content &#169; Francesca Buccione. All rights reserved.</p>
+            <p class="github">&#169; <a href="https://github.com/JJenk89" target="_blank"><i class="fa-brands fa-github" style="color: #000000;"></i> JJenk89</a>  Web Design 2024</p>
+            <p class="rights">All photos, images and content &#169;Francesca Buccione. All rights reserved.</p>
             
         </div>
         
