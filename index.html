@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/index.css">
-    <script src="/assets/js/main.js" defer></script>
+    <link rel="stylesheet" href="/src/css/index.css">
+    <script src="/src/js/main.js" defer></script>
     <script src="https://kit.fontawesome.com/b05d5458c5.js" crossorigin="anonymous"></script>
     <title>Visuals by Francesca Buccione</title>
 </head>
 <body>
     <header>
-        <div class="logo"><h1>FB</h1></div>
+        <div class="logo">
+            <span class="visuals-by">VISUALS BY</span> <span class="francesca-buccione">Francesca Buccione</span>
+        </div>
         
-        <nav class="hidden" id="menu">
-            <ul class="nav-items " >
+        <nav class="hidden" id="desktop-menu">
+            <ul class="nav-items" >
                 <li><a href="/">Portfolio</a></li>
-                <li><a href="/html/gallery/gallery.html">Gallery</a></li>
+                <li><a href="/html/gallery/galleries.html">Galleries</a></li>
                 <li><a href="/html/about.html">About Me</a></li>
             </ul>
         </nav>
-        <button class="burger" id="burger"><i class="fa-solid fa-ellipsis" style="color: #000000;"></i></button>
-        <button class="cross hidden" id="cross"><i class="fa-solid fa-xmark" style="color: #000000;"></i></button>
+        
+        <div class="btns">
+            <button class="burger" id="burger"><img src="/assets/icons/menu.svg" alt="menu icon"></button>
+            <button class="cross hidden" id="cross"><img src="/assets/icons/close.svg" alt="close menu icon"></button>
+        </div>
+        
     </header>
-    <section class="gallery">
+
+    <nav class="hidden menu" id="menu">
+        <ul class="nav-items" >
+            <li><a href="/">Portfolio</a></li>
+            <li><a href="/html/gallery/galleries.html">Galleries</a></li>
+            <li><a href="/html/about.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <section class="portfolio">
         <div class="grid-wrapper">
         <div class="hero">hero</div>
         <div class="img1">img 1</div>
@@ -33,6 +48,7 @@
     </div>
         
     </section>
+
     <footer>
         <h6>Contact</h6>
         <section class="socials">

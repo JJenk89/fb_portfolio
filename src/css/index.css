@@ -1,8 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Gruppo&family=Licorice&family=Mrs+Saint+Delafield&family=Nothing+You+Could+Do&display=swap");
+
 * {
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
 	font-family: arial;
+}
+
+body {
+	min-height: 100vh;
+}
+
+.disable-scroll {
+	overflow: hidden;
 }
 
 /*  */
@@ -15,26 +25,56 @@ header {
 	justify-content: space-between;
 	align-items: flex-start;
 	background-color: transparent;
-	padding: 0 1rem 0 1rem;
+	padding: 1rem;
+	/* 	background: url(/assets/icons/1.svg) center center border-box;
+	background-size: 200px 600px; */
+	height: 110px;
+	width: 100vw;
 }
 
+/* .logo > img {
+	width: 125px;
+	height: 100px;
+} */
+
+.logo {
+	display: flex;
+	flex-direction: column;
+	justify-items: center;
+	align-items: center;
+}
+.visuals-by {
+	font-family: "Gruppo", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 1rem;
+}
+
+.francesca-buccione {
+	font-family: "Mrs Saint Delafield", cursive;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 2.4rem;
+}
 nav {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	height: 100dvh;
 	width: 100%;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	z-index: 2;
 }
 
 .nav-items {
 	list-style: none;
+	margin: 3rem auto;
 }
 
 .nav-items > li {
-	padding: 1rem;
+	padding: 2rem;
+	margin: 2rem auto;
 	font-weight: 600;
+	font-size: 1.5rem;
 }
 
 a {
@@ -46,6 +86,7 @@ a {
 	border: none;
 	background-color: transparent;
 	font-size: 1.5rem;
+	cursor: pointer;
 }
 
 .cross {
@@ -71,11 +112,17 @@ a {
 .grid-wrapper > div {
 	border: 1px solid rgb(0, 0, 0);
 	background-color: rgb(205, 43, 226);
+	transition: transform 0.5s ease-in-out;
 }
 
 .hero {
 	grid-column: span 4 / span 4;
 	grid-row: span 2 / span 2;
+	cursor: pointer;
+}
+
+.hero:hover {
+	transform: translateY(-10px);
 }
 
 .img1 {

@@ -1,0 +1,19 @@
+.flowers-gallery h1 {
+	text-align: center;
+	margin: 2rem auto;
+}
+
+.flowers-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	gap: 0.4rem;
+	margin: 0 0.5rem 2rem 0.5rem;
+}
+
+.flowers-grid > img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}

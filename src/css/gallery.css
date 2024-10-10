@@ -1,0 +1,18 @@
+.gallery {
+	height: 75vh;
+}
+
+.gallery h1 {
+	text-align: center;
+	margin: 2rem auto;
+	font-size: 2.5rem;
+}
+
+.gallery ul {
+	text-align: center;
+}
+
+.gallery ul > li {
+	margin: 2rem auto;
+	font-size: 1.5rem;
+}
