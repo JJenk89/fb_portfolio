@@ -25,6 +25,46 @@ cross.addEventListener("click", () => {
 menuLinks.forEach((a) => {
 	a.addEventListener("click", () => {
 		document.body.classList.remove("disable-scroll");
-		menu.classList.remove("hidden");
+
+		if (menu.classList == "hidden") {
+			return;
+		} else {
+			menu.classList.remove("hidden");
+		}
 	});
+});
+
+//IMG POPUP
+const images = document.querySelectorAll(".flowers-grid img");
+const popupImage = document.querySelector(".popup img");
+const prevBtn = document.querySelector(".prev-btn");
+const nextBtn = document.querySelector(".next-btn");
+const popup = document.querySelector(".popup");
+
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+	img.addEventListener("click", () => {
+		currentIndex = index;
+		popupImage.src = img.src;
+		popup.classList.add("show");
+		document.body.classList.add("disable-scroll");
+	});
+});
+
+prevBtn.addEventListener("click", () => {
+	currentIndex = (currentIndex - 1 + images.length) % images.length;
+	popupImage.src = images[currentIndex].src;
+});
+
+nextBtn.addEventListener("click", () => {
+	currentIndex = (currentIndex + 1) % images.length;
+	popupImage.src = images[currentIndex].src;
+});
+
+popup.addEventListener("click", (e) => {
+	if (e.target === popup) {
+		popup.classList.remove("show");
+		document.body.classList.remove("disable-scroll");
+	}
 });

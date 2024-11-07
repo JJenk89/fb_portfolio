@@ -26,16 +26,9 @@ header {
 	align-items: flex-start;
 	background-color: transparent;
 	padding: 1rem;
-	/* 	background: url(/assets/icons/1.svg) center center border-box;
-	background-size: 200px 600px; */
 	height: 110px;
 	width: 100vw;
 }
-
-/* .logo > img {
-	width: 125px;
-	height: 100px;
-} */
 
 .logo {
 	display: flex;
