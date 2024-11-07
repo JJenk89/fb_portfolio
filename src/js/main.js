@@ -24,13 +24,8 @@ cross.addEventListener("click", () => {
 //removes menu on link click inside the menu
 menuLinks.forEach((a) => {
 	a.addEventListener("click", () => {
+		menu.classList.add("hidden");
 		document.body.classList.remove("disable-scroll");
-
-		if (menu.classList == "hidden") {
-			return;
-		} else {
-			menu.classList.remove("hidden");
-		}
 	});
 });
 
