@@ -95,51 +95,27 @@ a {
 
 .grid-wrapper {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(5, 1fr);
-	margin: 2rem 1rem 2rem 1rem;
-	min-height: 100vh;
-	justify-content: center;
-	gap: 8px;
-}
-.grid-wrapper > div {
-	border: 1px solid rgb(0, 0, 0);
-	background-color: rgb(205, 43, 226);
-	transition: transform 0.5s ease-in-out;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+	gap: 0.4rem;
+	margin: 0 0.5rem 2rem 0.5rem;
 }
 
-.hero {
-	grid-column: span 4 / span 4;
-	grid-row: span 2 / span 2;
+.grid-wrapper > img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 10px;
 	cursor: pointer;
 }
 
-.hero:hover {
-	transform: translateY(-10px);
-}
-
-.img1 {
-	grid-column: span 2 / span 2;
-	grid-row-start: 3;
-}
-.img2 {
-	grid-column: span 2 / span 2;
-	grid-column-start: 3;
-	grid-row-start: 3;
-}
-.img3 {
-	grid-column: span 2 / span 2;
-	grid-row-start: 4;
-}
-.img4 {
-	grid-column: span 2 / span 2;
-	grid-column-start: 3;
-	grid-row-start: 4;
-}
-.img5 {
-	grid-column: span 4 / span 4;
-	grid-row: span 2 / span 2;
-	grid-row-start: 5;
+.hero {
+	grid-column: 1 / 3;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
 /*  */
