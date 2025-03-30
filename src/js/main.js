@@ -1,6 +1,9 @@
 //Lightboxes
 //Carousel
 
+//Auto update the year in the footer
+document.getElementById("date").textContent = new Date().getFullYear();
+
 //Burger
 const burger = document.getElementById("burger");
 const menu = document.getElementById("menu");
@@ -30,7 +33,7 @@ menuLinks.forEach((a) => {
 });
 
 //IMG POPUP
-const images = document.querySelectorAll(".flowers-grid img");
+const images = document.querySelectorAll(".grid img");
 const popupImage = document.querySelector(".popup img");
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
