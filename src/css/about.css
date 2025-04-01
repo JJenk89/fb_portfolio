@@ -11,3 +11,6 @@ p {
 .about > p {
 	line-height: 1.4rem;
 }
+
+@media screen and (min-width: 600px) {
+}
