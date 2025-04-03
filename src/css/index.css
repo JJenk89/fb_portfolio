@@ -27,7 +27,6 @@ header {
 	justify-content: space-between;
 	align-items: flex-start;
 	background-color: transparent;
-	padding: 1rem;
 	height: 110px;
 	width: 100vw;
 }
@@ -171,11 +170,11 @@ footer {
 		gap: 1rem;
 	}
 
-	img:hover {
+	/* img:hover {
 		transition: all 0.3s ease-in-out;
 		transform: scale(1.05);
 		cursor: url("/assets/icons/Camera.png") 16 16, auto;
-	}
+	} */
 
 	.hero {
 		grid-column: 1 / 3;
@@ -283,18 +282,53 @@ footer {
 	nav {
 		display: flex;
 		flex-direction: row;
+		height: 200px;
 	}
 
 	#desktop-menu {
 		display: inline;
 		width: 70%;
 		text-align: end;
+		margin: 0 3rem 0 0;
 
 		& li {
 			list-style: none;
 			text-decoration: underline;
 			display: inline;
-			margin: 0 1rem;
+			margin: 0 1rem 0 1rem;
 		}
+	}
+}
+
+/*  */ /*  */ /*  */ /*  */ /*  */
+/* DESKTOPS & LARGE SCREENS */
+/*  */ /*  */ /*  */ /*  */ /*  */
+
+@media screen and (min-width: 1200px) {
+	h1 {
+		font-size: 2.5rem;
+	}
+	.grid-wrapper {
+		margin: 3rem;
+	}
+
+	header {
+		margin: 1rem 3rem 0 3rem;
+		font-size: 1.3rem;
+	}
+
+	.visuals-by {
+		font-size: 1.3rem;
+	}
+
+	.francesca-buccione {
+		font-family: "Mrs Saint Delafield", cursive;
+		font-weight: 400;
+		font-style: normal;
+		font-size: 3rem;
+	}
+
+	.desktop-nav-items {
+		padding: none;
 	}
 }

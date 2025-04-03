@@ -76,3 +76,13 @@
 		grid-row: 3 / 4;
 	}
 }
+
+/*  */ /*  */ /*  */ /*  */ /*  */
+/* DESKTOPS & LARGE SCREENS */
+/*  */ /*  */ /*  */ /*  */ /*  */
+
+@media screen and (min-width: 1200px) {
+	.flowers-grid {
+		margin: 3rem;
+	}
+}

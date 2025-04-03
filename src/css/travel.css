@@ -91,3 +91,13 @@
 		grid-row: 4 / 8;
 	}
 }
+
+/*  */ /*  */ /*  */ /*  */ /*  */
+/* DESKTOPS & LARGE SCREENS */
+/*  */ /*  */ /*  */ /*  */ /*  */
+
+@media screen and (min-width: 1200px) {
+	.travel-grid {
+		margin: 3rem;
+	}
+}

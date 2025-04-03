@@ -83,3 +83,13 @@
 		grid-row: 5 / 8;
 	}
 }
+
+/*  */ /*  */ /*  */ /*  */ /*  */
+/* DESKTOPS & LARGE SCREENS */
+/*  */ /*  */ /*  */ /*  */ /*  */
+
+@media screen and (min-width: 1200px) {
+	.cinematic-grid {
+		margin: 3rem;
+	}
+}
