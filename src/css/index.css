@@ -9,6 +9,8 @@
 
 body {
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .disable-scroll {
@@ -124,10 +126,10 @@ a {
 /*  */ /*  */ /*  */
 
 footer {
+	border-top: solid 1px black;
 	display: flex;
 	flex-direction: column;
-	margin: 0 1rem 0 1rem;
-	justify-items: center;
+	margin: auto 1rem 0 1rem;
 	justify-content: flex-start;
 	align-items: center;
 }
