@@ -43,9 +43,6 @@ function updateSource() {
 		if (width >= 599) {
 			img.setAttribute("src", src.replace("_sm", "_md"));
 		}
-		if (width >= 1000) {
-			img.setAttribute("src", src.replace("_sm", "_lg"));
-		}
 	});
 }
 
@@ -187,4 +184,17 @@ document.addEventListener("contextmenu", (e) => {
 		alert("Right-click is disabled on images");
 		return false;
 	}
+});
+
+//HEART ICONS//
+const heartIcons = document.querySelectorAll(".heart-icon");
+
+heartIcons.forEach((heart) => {
+	heart.addEventListener("click", function (e) {
+		// Prevent event bubbling
+		e.stopPropagation();
+
+		// Toggle the liked class
+		this.classList.toggle("liked");
+	});
 });
