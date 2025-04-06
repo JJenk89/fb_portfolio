@@ -188,6 +188,7 @@ document.addEventListener("contextmenu", (e) => {
 
 //HEART ICONS//
 const heartIcons = document.querySelectorAll(".heart-icon");
+restoreLikedStates(); // Restore liked states on page load
 
 heartIcons.forEach((heart) => {
 	heart.addEventListener("click", function (e) {
@@ -196,5 +197,60 @@ heartIcons.forEach((heart) => {
 
 		// Toggle the liked class
 		this.classList.toggle("liked");
+
+		// Find the parent container and get the image
+		const container = this.closest(".heart-container").parentElement;
+		const img = container.querySelector("img");
+
+		// Get unique ID from data attribute or create one if not present
+		let imageId = getUniqueImageId(img);
+
+		// Save to localStorage based on current state
+		if (this.classList.contains("liked")) {
+			localStorage.setItem("liked-" + imageId, "true");
+		} else {
+			localStorage.removeItem("liked-" + imageId);
+		}
 	});
 });
+
+function getUniqueImageId(imgElement) {
+	// First check if we have a data-image-id attribute
+	if (imgElement.hasAttribute("data-image-id")) {
+		return imgElement.getAttribute("data-image-id");
+	}
+
+	// If not, create one using gallery name (if available) and src
+	let gallery = imgElement.hasAttribute("data-gallery")
+		? imgElement.getAttribute("data-gallery")
+		: "gallery";
+
+	// Get the filename from the src
+	let filename = imgElement.getAttribute("src").split("/").pop();
+
+	// Combine gallery and filename for uniqueness
+	return gallery + "-" + filename;
+}
+
+function restoreLikedStates() {
+	// Get all images that have the data attributes we use for tracking likes
+	const images = document.querySelectorAll(
+		"img[data-gallery][data-image-id]"
+	);
+
+	images.forEach((img) => {
+		// Get the unique ID for this image
+		const imageId = getUniqueImageId(img);
+
+		// Check if this image is liked in localStorage
+		if (localStorage.getItem("liked-" + imageId) === "true") {
+			// Find the container and heart icon
+			const container = img.parentElement;
+			const heartIcon = container.querySelector(".heart-icon");
+
+			if (heartIcon) {
+				heartIcon.classList.add("liked");
+			}
+		}
+	});
+}
