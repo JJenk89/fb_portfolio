@@ -150,8 +150,8 @@ img {
 }
 
 .heart-icon.liked {
-	fill: #ff5252;
-	stroke: #ff5252;
+	fill: #e51c1c;
+	stroke: #e51c1c;
 }
 
 /*  */
@@ -169,19 +169,21 @@ footer {
 }
 
 .socials {
-	font-size: 2rem;
 	display: flex;
+	flex-direction: row;
+	align-items: center;
 	justify-content: center;
-	gap: 4rem;
+	gap: 2.5rem;
 	width: 100%;
 	padding: 10px;
 }
 
+.icons {
+	font-size: 1.5rem;
+}
+
 .attributions {
 	font-size: 12px;
-}
-.attributions > p {
-	padding: 10px;
 }
 
 .hidden {
@@ -359,5 +361,11 @@ footer {
 
 	.desktop-nav-items {
 		padding: none;
+	}
+
+	div:has(> img[data-gallery]):hover {
+		transition: all 0.2s ease-in-out;
+		cursor: pointer;
+		transform: scale(1.03);
 	}
 }

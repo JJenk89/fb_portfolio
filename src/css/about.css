@@ -1,4 +1,5 @@
-.about {
+.about,
+.palettes {
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
@@ -7,23 +8,103 @@
 	max-width: 500px;
 	max-height: 500px;
 	margin: 0 auto;
-	/* background: url("/assets/images/franzi.jpeg") no-repeat center center/cover;
-	border-image: linear-gradient(hsla(0, 0%, 99%, 0.532)) fill 1; */
 }
 
-.about > h1,
-p {
+.palettes {
+	margin-bottom: 12rem;
+}
+
+.about h1,
+.about p,
+.palettes h1,
+.palettes h2,
+.palettes p {
 	padding: 1rem;
 	text-align: justify;
 	max-width: 500px;
+	line-height: 1.4rem;
+	text-wrap: pretty;
 }
 
-.about > p {
-	line-height: 1.4rem;
+.palette-wrapper {
+	position: relative;
+	width: 320px; /* Fixed width */
+	height: 80px; /* Fixed height */
+	margin-top: 1rem;
+	pointer-events: auto;
+}
+
+.palette-group {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 8px;
+	opacity: 0;
+	visibility: hidden; /* Added for better browser compatibility */
+	pointer-events: none;
+	transition: opacity 0.5s ease, visibility 0.5s ease; /* Added visibility transition */
+}
+
+.palette-group.active {
+	opacity: 1;
+	visibility: visible; /* Added for better browser compatibility */
+	pointer-events: auto;
+}
+
+.palette {
+	height: 80px;
+	cursor: pointer;
+	position: relative;
+	border-radius: 4px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	pointer-events: auto;
+}
+
+/* Color definitions */
+.one {
+	background-color: #3c301e;
+}
+.two {
+	background-color: #d49d5b;
+}
+.three {
+	background-color: #30e5ef;
+}
+.four {
+	background-color: #5b7ccb;
+}
+.five {
+	background-color: #271e27;
+}
+.six {
+	background-color: #d9cdd9;
+}
+.seven {
+	background-color: #80779c;
+}
+.eight {
+	background-color: #8a8cac;
+}
+.nine {
+	background-color: #121f14;
+}
+.ten {
+	background-color: #2c7e09;
+}
+.eleven {
+	background-color: #504d43;
+}
+.twelve {
+	background-color: #b98e4e;
 }
 
 @media screen and (min-width: 600px) {
-	.about {
+	.about,
+	.palettes {
 		padding: 1rem;
 	}
 }

@@ -18,6 +18,9 @@
 /*  */ /*  */ /*  */ /*  */ /*  */
 
 @media screen and (min-width: 1200px) {
+	.gallery {
+		margin-bottom: 5rem;
+	}
 	.gallery h1 {
 		text-align: center;
 		margin: 2rem auto;
