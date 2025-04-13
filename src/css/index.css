@@ -336,6 +336,10 @@ footer {
 /*  */ /*  */ /*  */ /*  */ /*  */
 
 @media screen and (min-width: 1200px) {
+	.logo {
+		width: 17rem;
+		height: 6rem;
+	}
 	h1 {
 		font-size: 2.5rem;
 	}
