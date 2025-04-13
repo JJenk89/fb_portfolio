@@ -129,8 +129,6 @@ function handleTouchEnd(event) {
 			nextBtn.click();
 		}
 	}
-
-	// Reset touch state
 	resetTouchState();
 }
 
@@ -151,11 +149,11 @@ popup.addEventListener("click", (e) => {
 	if (e.target === popup) {
 		popup.classList.remove("show");
 		document.body.classList.remove("disable-scroll");
-		resetTouchState(); // Reset touch state when lightbox closes
+		resetTouchState();
 	}
 });
 
-// Add keyboard support (optional enhancement)
+//  keyboard support
 document.addEventListener("keydown", (e) => {
 	if (popup.classList.contains("show")) {
 		if (e.key === "Escape") {
@@ -169,7 +167,7 @@ document.addEventListener("keydown", (e) => {
 	}
 });
 
-// Add accessibility enhancements
+// accessibility enhancements
 popupImage.setAttribute("role", "img");
 popup.setAttribute("role", "dialog");
 popup.setAttribute("aria-modal", "true");
@@ -254,74 +252,3 @@ function restoreLikedStates() {
 		}
 	});
 }
-
-//Palette switcher//
-
-// Wait for DOM to be fully loaded
-console.log("Palette script starting...");
-
-// Wait for DOM to be fully loaded
-document.addEventListener("DOMContentLoaded", function () {
-	console.log("DOM loaded - checking for palette elements");
-
-	const paletteContainer = document.getElementById("palette-container");
-	console.log("Palette container found:", Boolean(paletteContainer));
-
-	if (!paletteContainer) {
-		console.error(
-			"Palette container is null - check your HTML for id='palette-container'"
-		);
-		// Try to find by class as fallback
-		const containerByClass = document.querySelector(".palette-wrapper");
-		console.log("Found by class instead:", Boolean(containerByClass));
-
-		if (containerByClass) {
-			console.log("Adding ID to container");
-			containerByClass.id = "palette-container";
-		}
-	}
-
-	// Try again after potential fix
-	const container =
-		document.getElementById("palette-container") ||
-		document.querySelector(".palette-wrapper");
-
-	if (container) {
-		console.log("Working with container:", container);
-		const paletteGroups = document.querySelectorAll(".palette-group");
-		console.log("Found palette groups:", paletteGroups.length);
-
-		// Add direct click handlers to each palette
-		document.querySelectorAll(".palette").forEach((palette, index) => {
-			console.log("Adding click handler to palette", index);
-
-			palette.addEventListener("click", function (e) {
-				console.log("Direct palette click on", index);
-				e.stopPropagation();
-
-				// Toggle between groups
-				paletteGroups.forEach((group) => {
-					group.classList.toggle("active");
-				});
-			});
-		});
-
-		// Also add container level delegation as backup
-		container.addEventListener("click", function (event) {
-			console.log("Container clicked at", event.clientX, event.clientY);
-
-			const palette = event.target.closest(".palette");
-			if (palette) {
-				console.log("Found palette via delegation");
-
-				paletteGroups.forEach((group) => {
-					group.classList.toggle("active");
-				});
-			} else {
-				console.log("Click did not hit a palette element");
-			}
-		});
-	} else {
-		console.error("Could not find palette container by any means!");
-	}
-});

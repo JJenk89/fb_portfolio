@@ -5,7 +5,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
-	max-width: 500px;
+	max-width: 700px;
 	max-height: 500px;
 	margin: 0 auto;
 }
@@ -21,7 +21,7 @@
 .palettes p {
 	padding: 1rem;
 	text-align: justify;
-	max-width: 500px;
+	max-width: 600px;
 	line-height: 1.4rem;
 	text-wrap: pretty;
 }
@@ -44,9 +44,17 @@
 	grid-template-columns: repeat(4, 1fr);
 	gap: 8px;
 	opacity: 0;
-	visibility: hidden; /* Added for better browser compatibility */
+	visibility: hidden;
 	pointer-events: none;
-	transition: opacity 0.5s ease, visibility 0.5s ease; /* Added visibility transition */
+	transition: opacity 0.5s ease, visibility 0.5s ease;
+
+	& p {
+		grid-column: 1 / 5;
+		padding: 0;
+		text-align: center;
+		font-weight: 600;
+		font-style: italic;
+	}
 }
 
 .palette-group.active {
@@ -65,6 +73,7 @@
 }
 
 /* Color definitions */
+/* Palette 1 */
 .one {
 	background-color: #3c301e;
 }
@@ -77,6 +86,9 @@
 .four {
 	background-color: #5b7ccb;
 }
+
+/* Palette 2 */
+
 .five {
 	background-color: #271e27;
 }
@@ -89,6 +101,8 @@
 .eight {
 	background-color: #8a8cac;
 }
+
+/* Palette 3 */
 .nine {
 	background-color: #121f14;
 }
@@ -102,9 +116,98 @@
 	background-color: #b98e4e;
 }
 
+/* Palette 4 */
+
+.thirteen {
+	background-color: #b6b19f;
+}
+.fourteen {
+	background-color: #2c353b;
+}
+.fifteen {
+	background-color: #6b4c4d;
+}
+.sixteen {
+	background-color: #7b5c42;
+}
+
+/* Palette 5 */
+
+.seventeen {
+	background-color: #b6bfc7;
+}
+.eighteen {
+	background-color: #262221;
+}
+.nineteen {
+	background-color: #774d33;
+}
+.twenty {
+	background-color: #9e6e47;
+}
+
+/* Palette 6 */
+.twenty-one {
+	background-color: #190f0c;
+}
+.twenty-two {
+	background-color: #ca846c;
+}
+.twenty-three {
+	background-color: #46b281;
+}
+.twenty-four {
+	background-color: #445074;
+}
+
+/* Palette 7 */
+.twenty-five {
+	background-color: #b9b8b5;
+}
+.twenty-six {
+	background-color: #342019;
+}
+.twenty-seven {
+	background-color: #9c7675;
+}
+.twenty-eight {
+	background-color: #88897d;
+}
+/* Palette 8 */
+
 @media screen and (min-width: 600px) {
 	.about,
 	.palettes {
 		padding: 1rem;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.palette-wrapper {
+		margin-top: 2rem;
+	}
+
+	.about h1,
+	.about p,
+	.palettes h1,
+	.palettes h2,
+	.palettes p {
+		padding: 1.4rem;
+		text-align: justify;
+		max-width: 600px;
+		line-height: 1.6rem;
+		text-wrap: pretty;
+	}
+
+	.palettes h2 {
+		font-size: 2.4rem;
+	}
+
+	.palette-group p {
+		grid-column: 1 / 5;
+		padding: 0;
+		text-align: center;
+		font-weight: 600;
+		font-style: italic;
 	}
 }
