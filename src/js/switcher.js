@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		);
 		let currentIndex = 0;
 
-		// Initialize - activate first group
+		// Initialise the first group as active
 		paletteGroups.forEach((group, index) => {
 			group.classList.toggle("active", index === 0);
 		});
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			// Deactivate current group
 			paletteGroups[currentIndex].classList.remove("active");
 
-			// Calculate next index (cycles through 0, 1, 2)
+			// Calculate next index (cycles through 0, 1, 2, etc.)
 			currentIndex = (currentIndex + 1) % paletteGroups.length;
 
 			// Activate next group
