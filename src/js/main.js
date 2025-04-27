@@ -35,13 +35,17 @@ menuLinks.forEach((a) => {
 
 //Replaces the source image depending on screen size
 function updateSource() {
+	// Update grid images
 	const width = window.innerWidth;
 	const images = document.querySelectorAll(".grid img");
 
+	// Only update grid images (lightbox will always use _md)
 	images.forEach((img) => {
 		const src = img.getAttribute("src");
 		if (width >= 599) {
 			img.setAttribute("src", src.replace("_sm", "_md"));
+		} else {
+			img.setAttribute("src", src.replace("_md", "_sm"));
 		}
 	});
 }
@@ -83,6 +87,9 @@ heartIcons.forEach((heart) => {
 		} else {
 			localStorage.removeItem("liked-" + imageId);
 		}
+
+		// Track the heart click event
+		trackHeartClick(this.classList.contains("liked"), imageId, img);
 	});
 });
 
@@ -123,5 +130,29 @@ function restoreLikedStates() {
 				heartIcon.classList.add("liked");
 			}
 		}
+	});
+}
+
+function trackHeartClick(isLiked, imageId, imgElement) {
+	// Only proceed if analytics consent was given
+	if (localStorage.getItem("analyticsConsent") !== "true") return;
+
+	// Check if gtag is loaded
+	if (typeof gtag === "undefined") return;
+
+	// Get additional information about the image
+	const galleryName = imgElement.getAttribute("data-gallery") || "default";
+	const imageSrc = imgElement.getAttribute("src");
+	const imageAlt = imgElement.getAttribute("alt") || "No description";
+
+	// Send the event to Google Analytics
+	gtag("event", "heart_click", {
+		event_category: "Gallery Interaction",
+		event_label: galleryName,
+		value: isLiked ? 1 : 0, // 1 for liked, 0 for unliked
+		image_id: imageId,
+		image_src: imageSrc,
+		image_alt: imageAlt,
+		gallery_name: galleryName,
 	});
 }

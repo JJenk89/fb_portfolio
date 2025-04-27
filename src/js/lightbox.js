@@ -1,16 +1,26 @@
 //IMG LIGHTBOX//
+// This code implements a lightbox feature for all images in the galleries
+// It shows the images in a lightbox when clicked, allowing users to navigate
+// using the left and right arrow keys or by swiping on touch devices
+// It also includes a fullscreen feature, which allows users to view the images in fullscreen mode
+
 const images = document.querySelectorAll(".grid img");
 const popupImage = document.querySelector("#lightbox-img");
 const prevBtn = document.querySelector(".prev-btn");
 const nextBtn = document.querySelector(".next-btn");
 const popup = document.querySelector(".popup");
+const closeBtn = document.querySelector("#close-popup");
+const expandBtn = document.querySelector("#expand");
+const compressBtn = document.querySelector(".fa-compress");
+const controlBtns = document.querySelector(".control-btns");
 
 let currentIndex = 0;
 
 images.forEach((img, index) => {
 	img.addEventListener("click", () => {
 		currentIndex = index;
-		popupImage.src = img.src;
+		// Always load _md version in lightbox
+		popupImage.src = img.src.replace("_sm", "_md");
 		popup.classList.add("show");
 		document.body.classList.add("disable-scroll");
 	});
@@ -18,20 +28,79 @@ images.forEach((img, index) => {
 
 prevBtn.addEventListener("click", () => {
 	currentIndex = (currentIndex - 1 + images.length) % images.length;
-	popupImage.src = images[currentIndex].src;
+	popupImage.src = images[currentIndex].src.replace("_sm", "_md");
 });
 
 nextBtn.addEventListener("click", () => {
 	currentIndex = (currentIndex + 1) % images.length;
-	popupImage.src = images[currentIndex].src;
+	popupImage.src = images[currentIndex].src.replace("_sm", "_md");
 });
 
 popup.addEventListener("click", (e) => {
 	if (e.target === popup) {
 		popup.classList.remove("show");
 		document.body.classList.remove("disable-scroll");
+		document.exitFullscreen();
 	}
 });
+
+closeBtn.addEventListener("click", (e) => {
+	e.stopPropagation();
+	popup.classList.remove("show");
+	document.body.classList.remove("disable-scroll");
+	console.log("closeBtn clicked");
+
+	document.exitFullscreen();
+	updateSource();
+});
+
+expandBtn.addEventListener("click", async () => {
+	try {
+		if (!document.fullscreenElement) {
+			// Enter fullscreen
+			await document.documentElement.requestFullscreen();
+			expandBtn.classList.add("hidden");
+			compressBtn.classList.remove("hidden");
+		} else {
+			// Exit fullscreen
+			await document.exitFullscreen();
+			expandBtn.classList.remove("hidden");
+			compressBtn.classList.add("hidden");
+		}
+	} catch (err) {
+		console.error("Fullscreen error:", err);
+	}
+});
+
+compressBtn.addEventListener("click", () => {
+	document.exitFullscreen();
+	expandBtn.classList.remove("hidden");
+	compressBtn.classList.add("hidden");
+});
+
+// Hides buttons in landscape mode
+window
+	.matchMedia("(orientation: landscape)")
+	.addEventListener("change", (e) => {
+		const landscape = e.matches;
+
+		if (!document.fullscreenElement) {
+			document.documentElement.requestFullscreen();
+		}
+
+		if (landscape) {
+			expandBtn.classList.add("hidden-btns");
+			compressBtn.classList.add("hidden-btns");
+			closeBtn.classList.add("hidden-btns");
+			controlBtns.classList.add("landscape");
+		} else {
+			expandBtn.classList.remove("hidden-btns");
+			closeBtn.classList.remove("hidden-btns");
+			controlBtns.classList.remove("landscape");
+		}
+
+		updateSource(); // Still update grid images
+	});
 
 // Store touch coordinates
 let touchStartX = 0;

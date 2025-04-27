@@ -29,8 +29,8 @@
 
 .popup-content {
 	position: relative;
-	width: 100vw;
-	height: 500px;
+	width: 100%;
+	height: 100%;
 	background-color: rgba(0, 0, 0, 0.65);
 	box-shadow: 0 0 20px rgba(204, 6, 245, 0.18);
 }
@@ -69,5 +69,31 @@
 .popup-buttons > button:hover {
 	background-color: rgba(255, 255, 255, 0.215);
 	color: #fff;
+	cursor: pointer;
+}
+
+.control-btns {
+	display: flex;
+	justify-content: space-between;
+	pointer-events: auto;
+	z-index: 9999;
+	position: relative;
+	padding: 1rem;
+	color: #fff;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.landscape {
+	padding: 0;
+	height: 0;
+	width: 0;
+}
+
+.expand {
+	text-align: left;
+	padding: 1rem;
+	color: #fff;
+	font-size: 1rem;
 	cursor: pointer;
 }
