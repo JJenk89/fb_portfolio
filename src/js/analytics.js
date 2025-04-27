@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Only show banner if no consent decision has been made
 	if (!localStorage.getItem("analyticsConsent")) {
 		consentBanner.classList.remove("hidden");
-		document.body.classList.add("disable-scroll");
 	}
 
 	// Handle consent acceptance
