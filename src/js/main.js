@@ -163,7 +163,7 @@ function trackHeartClick(isLiked, imageId, imgElement) {
 			image_id: imageId,
 			gallery_name: galleryName,
 			image_src: imageSrc,
-			image_alt: imageAlt,
+			image_description: imageAlt,
 			debug_mode: true, // Ensure debug mode for this event
 		});
 
