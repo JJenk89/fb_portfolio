@@ -133,26 +133,48 @@ function restoreLikedStates() {
 	});
 }
 
+// main.js - Improved version
 function trackHeartClick(isLiked, imageId, imgElement) {
-	// Only proceed if analytics consent was given
-	if (localStorage.getItem("analyticsConsent") !== "true") return;
+	// Debug logging
+	console.log("Attempting to track heart click...");
 
-	// Check if gtag is loaded
-	if (typeof gtag === "undefined") return;
+	// Check consent
+	if (localStorage.getItem("analyticsConsent") !== "true") {
+		console.log("Analytics consent not given, event not sent");
+		return;
+	}
 
-	// Get additional information about the image
+	// Check gtag availability
+	if (typeof window.gtag !== "function") {
+		console.error("gtag is not available - GA might not be loaded yet");
+		return;
+	}
+
+	// Get image data
 	const galleryName = imgElement.getAttribute("data-gallery") || "default";
 	const imageSrc = imgElement.getAttribute("src");
 	const imageAlt = imgElement.getAttribute("alt") || "No description";
 
-	// Send the event to Google Analytics
-	gtag("event", "heart_click", {
-		event_category: "Gallery Interaction",
-		event_label: galleryName,
-		value: isLiked ? 1 : 0, // 1 for liked, 0 for unliked
-		image_id: imageId,
-		image_src: imageSrc,
-		image_alt: imageAlt,
-		gallery_name: galleryName,
-	});
+	// Send event with proper GA4 parameters
+	try {
+		window.gtag("event", "heart_click", {
+			event_category: "engagement",
+			event_label: isLiked ? "like" : "unlike",
+			image_id: imageId,
+			gallery_name: galleryName,
+			image_src: imageSrc,
+			image_alt: imageAlt,
+			debug_mode: true, // Ensure debug mode for this event
+		});
+
+		console.log("Heart click event sent to GA4:", {
+			event: "heart_click",
+			category: "engagement",
+			label: isLiked ? "like" : "unlike",
+			image_id: imageId,
+			gallery_name: galleryName,
+		});
+	} catch (error) {
+		console.error("Error sending GA4 event:", error);
+	}
 }

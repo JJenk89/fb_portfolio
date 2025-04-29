@@ -4,27 +4,35 @@
 // It specifically tracks clicks on the "heart" buuttons
 
 // Check for consent
+// Define gtag globally so it can be accessed from other scripts
+// analytics.js - Improved version
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+	window.dataLayer.push(arguments);
+}
+window.gtag = gtag; // Ensure it's properly exposed
+
 function loadGoogleAnalytics() {
-	// Check if analytics script is already loaded (avoid duplicate loading)
-	if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
-		return;
-	}
+	// Check if already initialized
+	if (window.ga4Initialized) return;
+	window.ga4Initialized = true;
 
 	if (localStorage.getItem("analyticsConsent") === "true") {
-		// Load Google Analytics script
-		window.dataLayer = window.dataLayer || [];
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag("js", new Date());
-		gtag("config", "G-397DD95GZF");
-
-		// Add the GA script
+		// First load the script
 		const script = document.createElement("script");
 		script.async = true;
 		script.src = "https://www.googletagmanager.com/gtag/js?id=G-397DD95GZF";
 
-		// Add error handling
+		script.onload = function () {
+			// Initialize GA4 after script loads
+			gtag("js", new Date());
+			gtag("config", "G-397DD95GZF", {
+				debug_mode: true,
+				send_page_view: true,
+			});
+			console.log("GA4 initialized successfully");
+		};
+
 		script.onerror = function () {
 			console.error("Failed to load Google Analytics script");
 		};
@@ -32,6 +40,8 @@ function loadGoogleAnalytics() {
 		document.head.appendChild(script);
 	}
 }
+
+// Rest of your existing DOMContentLoaded code...
 
 // Main execution
 document.addEventListener("DOMContentLoaded", function () {
