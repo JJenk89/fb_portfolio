@@ -158,18 +158,18 @@ function trackHeartClick(isLiked, imageId, imgElement) {
 	// Send event with proper GA4 parameters
 	try {
 		window.gtag("event", "heart_click", {
-			event_category: "engagement",
+			event_category: "event",
 			event_label: isLiked ? "like" : "unlike",
 			image_id: imageId,
 			gallery_name: galleryName,
 			image_src: imageSrc,
-			image_description: imageAlt,
+			image_alt: imageAlt,
 			debug_mode: true, // Ensure debug mode for this event
 		});
 
 		console.log("Heart click event sent to GA4:", {
 			event: "heart_click",
-			category: "engagement",
+			category: "event",
 			label: isLiked ? "like" : "unlike",
 			image_id: imageId,
 			gallery_name: galleryName,
