@@ -437,7 +437,16 @@ footer {
 
 	header {
 		margin: 1rem 3rem 0 3rem;
-		font-size: 1.3rem;
+
+		& li {
+			font-size: 1.1rem;
+			font-weight: 100;
+		}
+
+		& li:hover {
+			cursor: pointer;
+			background: rgba(108, 1, 85, 0.135);
+		}
 	}
 
 	.visuals-by {
