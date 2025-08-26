@@ -29,6 +29,16 @@
 
 	.gallery ul > li {
 		margin: 4rem auto;
+		padding: 0.2rem;
 		font-size: 1.7rem;
+		width: 15%;
+		list-style: none;
+	}
+
+	.gallery ul > li:hover {
+		cursor: pointer;
+		background: rgba(108, 1, 85, 0.135);
+		transition: all 0.2s ease-in-out;
+		border-radius: 5px;
 	}
 }
