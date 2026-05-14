@@ -464,7 +464,7 @@ footer {
 	}
 
 	.desktop-nav-items {
-		padding: none;
+		padding: 0;
 	}
 
 	div:has(> img[data-gallery]):hover {
