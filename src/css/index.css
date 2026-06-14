@@ -15,6 +15,37 @@ body {
 	overflow: hidden;
 }
 
+/* 
+FADE IN ANIMATION
+*/
+
+@keyframes fadeSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.card {
+	opacity: 0;
+}
+
+.card.animate-in {
+	animation: fadeSlideIn 0.6s ease-out forwards;
+}
+
+.card.show {
+	opacity: 1;
+	transform: translateY(0);
+	transition:
+		opacity 0.6s ease-out,
+		transform 0.6s ease-out;
+}
+
 /*  */
 /*  */ /*  */
 /* MOBILE STYLES */

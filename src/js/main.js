@@ -113,7 +113,7 @@ function getUniqueImageId(imgElement) {
 function restoreLikedStates() {
 	// Get all images that have the data attributes we use for tracking likes
 	const images = document.querySelectorAll(
-		"img[data-gallery][data-image-id]"
+		"img[data-gallery][data-image-id]",
 	);
 
 	images.forEach((img) => {
@@ -178,3 +178,36 @@ function trackHeartClick(isLiked, imageId, imgElement) {
 		console.error("Error sending GA4 event:", error);
 	}
 }
+
+// Intersection Observer for lazy loading images
+// This will load images when they are about to enter the viewport
+// It will also a dd a fade-in effect when the image is loaded
+const cards = document.querySelectorAll(".card");
+const observer = new IntersectionObserver(
+	(entries, observer) => {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) return;
+
+			entry.target.classList.add("show");
+
+			observer.unobserve(entry.target);
+		});
+	},
+	{
+		root: null,
+		threshold: 0.2,
+		rootMargin: "0px 0px -50px 0px",
+	},
+);
+
+cards.forEach((card, index) => {
+	const rect = card.getBoundingClientRect();
+	const isAboveFold = rect.top < window.innerHeight && rect.bottom > 0;
+
+	if (isAboveFold) {
+		card.style.animationDelay = `${index * 60}ms`;
+		card.classList.add("animate-in");
+	} else {
+		observer.observe(card);
+	}
+});
